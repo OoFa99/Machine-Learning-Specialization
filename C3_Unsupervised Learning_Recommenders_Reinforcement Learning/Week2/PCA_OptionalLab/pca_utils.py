@@ -281,6 +281,7 @@ def plot_widget():
     n_line = (1,0)
 
     def update(angle):
+        global n_line
         ang = angle
         with fig.batch_update():
             p0r = rotation_matrix(ang)@p0
@@ -306,11 +307,6 @@ def plot_widget():
 
     #     projection_plot_1d = get_plane_base(orthogonal_to_line,n_line)
     #     rhs_scatter.data_source.data['x'] = projection_plot_1d[:,0]
-
-
-
-
-
 
     freq_slider = interactive(update, angle=(0, 180, 1))        
     fig = go.FigureWidget(data = final_data ).update_yaxes(scaleanchor = 'x', scaleratio= 1, range = [-1,1], visible=False).update_xaxes(range = [-1.5,1.5], visible=False)
